@@ -7,5 +7,14 @@ module.exports = {
     output: {
         filename: "main.js",
         path: path.resolve(__dirname, 'dist')
-    }
+    },
+
+    devServer: {
+        static: {
+            directory: path.join(__dirname, 'dist'),
+        },
+        port: 9000,
+        open: true,
+        liveReload: true,
+    },
 }

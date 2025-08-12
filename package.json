@@ -1,0 +1,12 @@
+{
+  "name": "hairday-project",
+  "description": "Projeto HairDay - Gerenciamento de Agendamentos de Corte de Cabelo",
+  "author": "Lucas Abreu",
+  "scripts": {
+    "server": "json-server --watch server.json --port 3333"
+  },
+
+  "dependencies": {
+    "json-server": "^1.0.0-alpha.21"
+  }
+}

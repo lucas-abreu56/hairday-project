@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { scheduleNew } from "../../services/schedule-new.js"
+import { scheduleDay } from "../schedules/load.js"
 
 const form = document.querySelector('form');
 const clientName = document.getElementById("client");
@@ -40,13 +41,36 @@ form.onsubmit = async (event) => {
         //Gera um ID
         const id = new Date().getTime();
 
+        //Faz o agendamento
         await scheduleNew({
             id,
             name,
             when: whenScheduled.format(),
         })
 
+        //Recarrega os agendamentos
+        await scheduleDay();
+
+        //Limpa o input de nome do cliente
+        clientName.value = "";
+
     } catch (error){
         alert("Não foi possível realizar o agendamento");
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const dateInput = document.getElementById('date');
+    const inputDiv = dateInput.closest('.input');
+    
+    // Torna toda a div clicável
+    inputDiv.addEventListener('click', function(e) {
+        if (e.target !== dateInput) {
+            dateInput.focus();
+            if (dateInput.showPicker) dateInput.showPicker();
+        }
+    });
+    
+    // Adiciona cursor pointer
+    inputDiv.style.cursor = 'pointer';
+});

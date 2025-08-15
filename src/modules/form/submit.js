@@ -11,7 +11,6 @@ const inputToday = dayjs(new Date()).format('YYYY-MM-DD');
 // Carrega a data atual no campo de data
 selectedDate.value = inputToday;
 
-
 // Define a data mínima para o campo de data como hoje
 selectedDate.min = inputToday;
 
@@ -44,7 +43,7 @@ form.onsubmit = async (event) => {
         await scheduleNew({
             id,
             name,
-            when,
+            when: whenScheduled.format(),
         })
 
     } catch (error){

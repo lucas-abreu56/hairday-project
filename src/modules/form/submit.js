@@ -58,19 +58,3 @@ form.onsubmit = async (event) => {
         alert("Não foi possível realizar o agendamento");
     }
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-    const dateInput = document.getElementById('date');
-    const inputDiv = dateInput.closest('.input');
-    
-    // Torna toda a div clicável
-    inputDiv.addEventListener('click', function(e) {
-        if (e.target !== dateInput) {
-            dateInput.focus();
-            if (dateInput.showPicker) dateInput.showPicker();
-        }
-    });
-    
-    // Adiciona cursor pointer
-    inputDiv.style.cursor = 'pointer';
-});
